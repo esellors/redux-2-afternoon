@@ -4,8 +4,8 @@ import "./../Budget/Budget.css"
 class Nav extends Component {
   render() {
     let { firstName, lastName } = this.props;
-    if (!firstName) firstName = 'MISSING'
-    if (!lastName) lastName = 'MISSING'
+    if (!firstName) firstName = 'Welcome,'
+    if (!lastName) lastName = 'Guest'
 
     return (
       <div className="top">

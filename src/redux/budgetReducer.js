@@ -1,4 +1,4 @@
-
+import Axios from "axios";
 
 const initialState = {
    purchases: [],
@@ -6,11 +6,31 @@ const initialState = {
    loading: false
 }
 
-export default function budgetReducer(state = initialState, action) {
-   // const {type, payload} = action;
+const REQUEST_BUDGET_DATA = 'REQUEST_BUDGET_DATA';
 
-   return state;
-   // switch(type) {
-   //    default: return state;
-   // }
+export const requestBudgetData = () => {
+   const data = Axios.get('/api/budget-data').then(res => res.data);
+   return {
+      type: REQUEST_BUDGET_DATA,
+      payload: data
+   }
+}
+
+export default function budgetReducer(state = initialState, action) {
+   const {type, payload} = action;
+
+   switch(type) {
+      case `${REQUEST_BUDGET_DATA}_PENDING`:
+         return {
+            ...state,
+            loading: true
+         }
+      case `${REQUEST_BUDGET_DATA}_FULFILLED`:
+         return {
+            ...state,
+            ...payload,
+            loading: false
+         }
+      default: return state;
+   }
 }
