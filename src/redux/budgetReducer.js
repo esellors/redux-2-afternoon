@@ -7,7 +7,7 @@ const initialState = {
 }
 
 export default function budgetReducer(state = initialState, action) {
-   const {type, payload} = action;
+   // const {type, payload} = action;
 
    return state;
    // switch(type) {
