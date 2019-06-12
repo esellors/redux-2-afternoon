@@ -15,11 +15,11 @@ app.use(session({
 }))
 
 // ==== REMOVE!!!! ====
-// const userData = require('./userData')
-// app.use((req, res, next) => {
-//   req.session.user = userData;
-//   next();
-// })
+const userData = require('./userData')
+app.use((req, res, next) => {
+  req.session.user = userData;
+  next();
+})
 // =====================
 
 app.get('/auth/user-data', user.userData)

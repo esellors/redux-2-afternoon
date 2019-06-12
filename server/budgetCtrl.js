@@ -1,5 +1,5 @@
 const budgetData = require('./budgetData');
-const timer = 2000;
+const timer = 250;
 let id = 4;
 module.exports = {
   budgetData(req, res) {
@@ -22,6 +22,7 @@ module.exports = {
   },
   remove(req, res) {
     const { id } = req.params;
+
     budgetData.purchases = budgetData.purchases.filter(purchase => purchase.id !== parseInt(id))
     setTimeout(() => res.send(budgetData.purchases), timer)
   }

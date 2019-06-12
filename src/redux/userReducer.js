@@ -9,7 +9,8 @@ const initialState = {
 const REQUEST_USER_DATA = 'REQUEST_USER_DATA';
 
 export const requestUserData = () => {
-   let data = Axios.get('/auth/user-data').then(res => res.data);
+   let data = Axios.get('/auth/user-data')
+      .then(res => res.data);
    return {
       type: REQUEST_USER_DATA,
       payload: data
@@ -23,6 +24,7 @@ export default function userReducer(state = initialState, action) {
       case `${REQUEST_USER_DATA}_FULFILLED`:
          const {email, firstName, lastName} = payload.user;
          return {
+            ...state,
             email,
             firstName,
             lastName
